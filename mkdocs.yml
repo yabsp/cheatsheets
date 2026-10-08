@@ -36,3 +36,4 @@ nav:
   - Home: index.md
   - tmux: tmux.md
   - Vim: vim.md
+  - Linux: linux.md

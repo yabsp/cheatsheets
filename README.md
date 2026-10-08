@@ -1,10 +1,11 @@
 # Cheat Sheets
-Minimal cheat sheets for terminal tools.
+Minimal cheat sheets for Linux and terminal tools.
 The site has been made using MkDocs.
 
 ## Available Cheat Sheets
 - [tmux](docs/tmux.md) - sessions, windows, panes and copy mode
 - [Vim](docs/vim.md) - visual mode, search, replace, copy and paste
+- [Linux](docs/linux.md) - disk usage, permissions, write protection, mounting and network shares
 
 ## Adding a Cheat Sheet
 1. Create `docs/<name>.md`.
