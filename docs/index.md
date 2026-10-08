@@ -4,6 +4,11 @@ All key bindings use the default prefix `Ctrl+b`: press `Ctrl+b`, release it,
 then press the key. Commands starting with `:` are typed into the command
 prompt, which opens with `Ctrl+b :`.
 
+!!! note "Version"
+    Checked in October 2026 against tmux 3.8. Everything without a version
+    mark also works in tmux 3.4. Check yours with `tmux -V`, distributions
+    often ship older versions.
+
 ## Sessions
 
 | Command | Description |
@@ -28,6 +33,7 @@ prompt, which opens with `Ctrl+b :`.
 | `Ctrl+b (` | Previous session |
 | `Ctrl+b )` | Next session |
 | `Ctrl+b L` | Last used session |
+| `Ctrl+b Shift+Tab` | Quick session switcher (3.8+) |
 
 ## Windows
 
@@ -43,6 +49,7 @@ prompt, which opens with `Ctrl+b :`.
 | `Ctrl+b 0` ... `9` | Go to window by number |
 | `Ctrl+b '` | Go to window by number, also above 9 |
 | `Ctrl+b f` | Find a window by name |
+| `Ctrl+b Tab` | Quick window switcher (3.8+) |
 | `Ctrl+b <` | Open the window menu |
 | `:swap-window -s 2 -t 1` | Swap windows 2 and 1 |
 | `:swap-window -t -1` | Move the window one position to the left |
@@ -63,13 +70,16 @@ prompt, which opens with `Ctrl+b :`.
 | `Ctrl+b {` | Swap with the previous pane |
 | `Ctrl+b }` | Swap with the next pane |
 | `Ctrl+b Space` | Cycle through layouts |
-| `Ctrl+b Alt+1` ... `5` | Switch to a preset layout |
+| `Ctrl+b Alt+1` ... `7` | Switch to a preset layout (6 and 7 need 3.5+) |
 | `Ctrl+b E` | Spread the panes evenly |
 | `Ctrl+b Ctrl+Arrow` | Resize the pane by 1 cell |
 | `Ctrl+b Alt+Arrow` | Resize the pane by 5 cells |
 | `Ctrl+b !` | Move the pane into its own window |
 | `:join-pane -s 2 -t 1` | Move the pane of window 2 into window 1 |
 | `:setw synchronize-panes` | Toggle typing into all panes at once |
+| `Ctrl+b T` | Change the pane title (3.8+) |
+| `Ctrl+b *` | Open a floating pane (3.7+) |
+| `Ctrl+b g` | Move or resize a floating pane (3.8+) |
 | `Ctrl+b x` | Close the pane |
 | `Ctrl+b >` | Open the pane menu |
 
@@ -111,7 +121,7 @@ mode with `:setw -g mode-keys vi` or in the [config file](#config-file).
 | `Ctrl+b :` | Open the command prompt |
 | `:set -g OPTION` | Set a session option for all sessions |
 | `:setw -g OPTION` | Set a window option for all windows |
-| `:set mouse on` | Enable the mouse |
+| `:set mouse on` | Enable the mouse (default since 3.8) |
 | `:source-file ~/.tmux.conf` | Reload the config file |
 | `tmux -V` | Show the tmux version |
 
@@ -121,7 +131,7 @@ A minimal starting point for `~/.tmux.conf`. Reload it with
 `:source-file ~/.tmux.conf` or restart tmux.
 
 ```bash
-# Mouse support for selecting panes, resizing and scrolling
+# Mouse support for selecting panes, resizing and scrolling (default since 3.8)
 set -g mouse on
 
 # vi keys in copy mode

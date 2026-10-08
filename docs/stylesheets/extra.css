@@ -16,3 +16,8 @@
 .md-typeset table:not([class]) td {
   overflow-wrap: anywhere;
 }
+
+/* Narrower first column for three column tables */
+.md-typeset table:not([class]) th:first-child:nth-last-child(3) {
+  width: 25%;
+}
