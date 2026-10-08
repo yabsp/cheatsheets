@@ -1,0 +1,1128 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="Yanick Spichty">
+      
+      
+        <link rel="canonical" href="https://yanick.spichty.org/cheatsheets/linux/">
+      
+      
+        <link rel="prev" href="../vim/">
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.4">
+    
+    
+      
+        <title>Linux - Cheat Sheets</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="blue-grey" data-md-color-accent="light-blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#linux-cheat-sheet" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Cheat Sheets" class="md-header__button md-logo" aria-label="Cheat Sheets" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Cheat Sheets
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Linux
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Cheat Sheets" class="md-nav__button md-logo" aria-label="Cheat Sheets" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Cheat Sheets
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tmux/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    tmux
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vim/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Vim
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Linux
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Linux
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#disk-usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Disk Usage
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#permissions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Permissions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#write-protection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Write Protection
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mounting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mounting
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#network-share-smb" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Network Share (SMB)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#users-and-groups" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Users and Groups
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#files" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Files
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#processes-and-services" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Processes and Services
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#network" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Network
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#system-info" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        System Info
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#packages" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Packages
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#shell" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Shell
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="linux-cheat-sheet">Linux Cheat Sheet<a class="headerlink" href="#linux-cheat-sheet" title="Permanent link">&para;</a></h1>
+<p>Useful commands that are easy to forget. Values in <code>&lt;angle brackets&gt;</code> are
+placeholders. Disk setup with fstab, SSH, firewall and Docker are covered in
+detail in the <a href="/media-server-guide/">Media Server Guide</a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Version</p>
+<p>Checked in October 2026 on Ubuntu 24.04 (util-linux 2.39). The commands
+are standard on Debian based systems, package names are for Debian and
+Ubuntu.</p>
+</div>
+<h2 id="disk-usage">Disk Usage<a class="headerlink" href="#disk-usage" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>duf</code></td>
+<td>Overview of all disks with size, used and free space (<code>sudo apt install duf</code>)</td>
+</tr>
+<tr>
+<td><code>duf /mnt/&lt;disk&gt;</code></td>
+<td>Only the disk that contains this path</td>
+</tr>
+<tr>
+<td><code>duf --only local</code></td>
+<td>Only local disks, also <code>network</code>, <code>fuse</code></td>
+</tr>
+<tr>
+<td><code>duf --sort size</code></td>
+<td>Sort by size, also <code>used</code>, <code>avail</code>, <code>usage</code></td>
+</tr>
+<tr>
+<td><code>df -h</code></td>
+<td>Built in alternative to <code>duf</code></td>
+</tr>
+<tr>
+<td><code>du -sh &lt;dir&gt;</code></td>
+<td>Total size of a folder</td>
+</tr>
+<tr>
+<td><code>du -h -d 1 &lt;dir&gt; | sort -h</code></td>
+<td>Size of each subfolder, largest last</td>
+</tr>
+<tr>
+<td><code>ncdu &lt;dir&gt;</code></td>
+<td>Interactive browser to find what fills a disk (<code>sudo apt install ncdu</code>)</td>
+</tr>
+<tr>
+<td><code>lsblk -f</code></td>
+<td>Disks, partitions, filesystems and mount points</td>
+</tr>
+</tbody>
+</table>
+<h2 id="permissions">Permissions<a class="headerlink" href="#permissions" title="Permanent link">&para;</a></h2>
+<p>Each digit is the sum of read (4), write (2) and execute (1), for the owner,
+the group and everyone else. On folders, execute means "may enter".</p>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>chmod 644 &lt;file&gt;</code></td>
+<td><code>rw-r--r--</code>, normal files</td>
+</tr>
+<tr>
+<td><code>chmod 755 &lt;dir&gt;</code></td>
+<td><code>rwxr-xr-x</code>, folders and scripts</td>
+</tr>
+<tr>
+<td><code>chmod 600 &lt;file&gt;</code></td>
+<td><code>rw-------</code>, only the owner, for keys and passwords</td>
+</tr>
+<tr>
+<td><code>chmod +x &lt;file&gt;</code></td>
+<td>Make executable</td>
+</tr>
+<tr>
+<td><code>chmod g+w,o-rwx &lt;file&gt;</code></td>
+<td>Add or remove single permissions: <code>u</code> <code>g</code> <code>o</code> <code>a</code> with <code>+</code> <code>-</code> <code>=</code></td>
+</tr>
+<tr>
+<td><code>chmod -R u=rwX,g=rX,o= &lt;dir&gt;</code></td>
+<td>Recursive, capital <code>X</code> sets execute only on folders and already executable files</td>
+</tr>
+<tr>
+<td><code>chmod g+s &lt;dir&gt;</code></td>
+<td>New files in the folder get the folder's group, good for shared folders</td>
+</tr>
+<tr>
+<td><code>chown &lt;user&gt;:&lt;group&gt; &lt;file&gt;</code></td>
+<td>Change owner and group</td>
+</tr>
+<tr>
+<td><code>chown -R &lt;user&gt;:&lt;group&gt; &lt;dir&gt;</code></td>
+<td>Change owner and group recursively</td>
+</tr>
+<tr>
+<td><code>stat -c '%a %U:%G %n' &lt;file&gt;</code></td>
+<td>Show permissions as a number with owner and group</td>
+</tr>
+<tr>
+<td><code>ls -l</code></td>
+<td>Show permissions, owner and group of all files</td>
+</tr>
+</tbody>
+</table>
+<h2 id="write-protection">Write Protection<a class="headerlink" href="#write-protection" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>sudo chattr +i &lt;file&gt;</code></td>
+<td>Make immutable: nobody, not even root, can change, delete or rename it</td>
+</tr>
+<tr>
+<td><code>sudo chattr -i &lt;file&gt;</code></td>
+<td>Remove the protection</td>
+</tr>
+<tr>
+<td><code>sudo chattr -R +i &lt;dir&gt;</code></td>
+<td>Protect a folder and everything in it</td>
+</tr>
+<tr>
+<td><code>sudo chattr +a &lt;file&gt;</code></td>
+<td>Append only, existing content cannot be changed (logs)</td>
+</tr>
+<tr>
+<td><code>lsattr &lt;file&gt;</code></td>
+<td>Show attributes, <code>i</code> or <code>a</code> means protected</td>
+</tr>
+</tbody>
+</table>
+<p><code>chattr</code> works on local filesystems like ext4, xfs and btrfs, not on network
+shares. It protects against mistakes, not against attackers, since root can
+remove the flag again.</p>
+<h2 id="mounting">Mounting<a class="headerlink" href="#mounting" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>findmnt</code></td>
+<td>Show all mounts as a tree</td>
+</tr>
+<tr>
+<td><code>findmnt -T &lt;path&gt;</code></td>
+<td>Show which mount contains a path</td>
+</tr>
+<tr>
+<td><code>sudo mount /dev/&lt;sdX1&gt; /mnt/&lt;dir&gt;</code></td>
+<td>Mount a partition, the folder must exist</td>
+</tr>
+<tr>
+<td><code>sudo umount /mnt/&lt;dir&gt;</code></td>
+<td>Unmount</td>
+</tr>
+<tr>
+<td><code>sudo fuser -vm /mnt/&lt;dir&gt;</code></td>
+<td>Show which processes keep a mount busy</td>
+</tr>
+<tr>
+<td><code>sudo umount -l /mnt/&lt;dir&gt;</code></td>
+<td>Detach now, finish unmounting once it is no longer busy</td>
+</tr>
+<tr>
+<td><code>sudo mount -o remount,ro /mnt/&lt;dir&gt;</code></td>
+<td>Remount read only, <code>rw</code> for read and write</td>
+</tr>
+<tr>
+<td><code>sudo mount -o loop &lt;image.iso&gt; /mnt/&lt;dir&gt;</code></td>
+<td>Mount an ISO image</td>
+</tr>
+<tr>
+<td><code>sudo mount --bind &lt;src&gt; &lt;dst&gt;</code></td>
+<td>Show a folder at a second location</td>
+</tr>
+<tr>
+<td><code>sudo findmnt --verify</code></td>
+<td>Check <code>/etc/fstab</code> for errors before rebooting</td>
+</tr>
+<tr>
+<td><code>sudo mount -a</code></td>
+<td>Mount everything from <code>/etc/fstab</code></td>
+</tr>
+<tr>
+<td><code>mountpoint /mnt/&lt;dir&gt;</code></td>
+<td>Check if a folder is a mount point</td>
+</tr>
+</tbody>
+</table>
+<h2 id="network-share-smb">Network Share (SMB)<a class="headerlink" href="#network-share-smb" title="Permanent link">&para;</a></h2>
+<p>Mount a share from a NAS, Windows or Samba server once. Needs
+<code>sudo apt install cifs-utils</code>.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>sudo<span class="w"> </span>mkdir<span class="w"> </span>-p<span class="w"> </span>/mnt/&lt;nas&gt;/&lt;share&gt;
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>sudo<span class="w"> </span>mount<span class="w"> </span>-t<span class="w"> </span>cifs<span class="w"> </span>-o<span class="w"> </span><span class="nv">username</span><span class="o">=</span>&lt;nas-user&gt;,uid<span class="o">=</span><span class="k">$(</span>id<span class="w"> </span>-u<span class="k">)</span>,gid<span class="o">=</span><span class="k">$(</span>id<span class="w"> </span>-g<span class="k">)</span>,dir_mode<span class="o">=</span><span class="m">0755</span>,file_mode<span class="o">=</span><span class="m">0644</span><span class="w"> </span>//&lt;server-ip&gt;/&lt;share&gt;<span class="w"> </span>/mnt/&lt;nas&gt;/&lt;share&gt;
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>-t cifs</code></td>
+<td>Filesystem type for SMB shares</td>
+</tr>
+<tr>
+<td><code>username=&lt;nas-user&gt;</code></td>
+<td>Login on the server, the password is asked for</td>
+</tr>
+<tr>
+<td><code>uid=$(id -u)</code> / <code>gid=$(id -g)</code></td>
+<td>Local owner and group of all files, usually <code>1000</code>, otherwise <code>root</code></td>
+</tr>
+<tr>
+<td><code>dir_mode=0755</code></td>
+<td>Permissions shown for folders</td>
+</tr>
+<tr>
+<td><code>file_mode=0644</code></td>
+<td>Permissions shown for files</td>
+</tr>
+<tr>
+<td><code>credentials=&lt;file&gt;</code></td>
+<td>Read <code>username=</code> and <code>password=</code> from a file instead</td>
+</tr>
+<tr>
+<td><code>vers=3.0</code></td>
+<td>Force an SMB version if connecting fails, default picks the newest</td>
+</tr>
+<tr>
+<td><code>ro</code></td>
+<td>Mount read only</td>
+</tr>
+<tr>
+<td><code>//&lt;server-ip&gt;/&lt;share&gt;</code></td>
+<td>Server IP or hostname and share name</td>
+</tr>
+<tr>
+<td><code>/mnt/&lt;nas&gt;/&lt;share&gt;</code></td>
+<td>Local folder to mount into</td>
+</tr>
+</tbody>
+</table>
+<p>Avoid <code>password=</code> on the command line, it ends up in the shell history. To
+mount the share at every boot, see
+<a href="/media-server-guide/07-backups/#1-persistent-nas-mount">Persistent NAS Mount</a>
+in the Media Server Guide.</p>
+<h2 id="users-and-groups">Users and Groups<a class="headerlink" href="#users-and-groups" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id &lt;user&gt;</code></td>
+<td>Show uid, gid and groups</td>
+</tr>
+<tr>
+<td><code>sudo usermod -aG &lt;group&gt; &lt;user&gt;</code></td>
+<td>Add to a group, without <code>-a</code> all other groups are removed</td>
+</tr>
+<tr>
+<td><code>newgrp &lt;group&gt;</code></td>
+<td>Use a new group without logging out</td>
+</tr>
+<tr>
+<td><code>sudo -iu &lt;user&gt;</code></td>
+<td>Open a shell as another user</td>
+</tr>
+<tr>
+<td><code>sudo passwd &lt;user&gt;</code></td>
+<td>Change a password</td>
+</tr>
+<tr>
+<td><code>getent group &lt;group&gt;</code></td>
+<td>Show the members of a group</td>
+</tr>
+</tbody>
+</table>
+<h2 id="files">Files<a class="headerlink" href="#files" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>find &lt;dir&gt; -name '*.log'</code></td>
+<td>Find files by name, <code>-iname</code> ignores case</td>
+</tr>
+<tr>
+<td><code>find &lt;dir&gt; -size +1G</code></td>
+<td>Find files larger than 1 GB</td>
+</tr>
+<tr>
+<td><code>find &lt;dir&gt; -mtime -1</code></td>
+<td>Find files changed in the last 24 hours</td>
+</tr>
+<tr>
+<td><code>grep -rn '&lt;text&gt;' &lt;dir&gt;</code></td>
+<td>Search text in all files with line numbers</td>
+</tr>
+<tr>
+<td><code>ln -s &lt;target&gt; &lt;link&gt;</code></td>
+<td>Create a symbolic link</td>
+</tr>
+<tr>
+<td><code>tar -czf &lt;archive&gt;.tar.gz &lt;dir&gt;</code></td>
+<td>Create a compressed archive</td>
+</tr>
+<tr>
+<td><code>tar -xzf &lt;archive&gt;.tar.gz -C &lt;dir&gt;</code></td>
+<td>Extract into a folder</td>
+</tr>
+<tr>
+<td><code>tar -tzf &lt;archive&gt;.tar.gz</code></td>
+<td>List the content</td>
+</tr>
+<tr>
+<td><code>rsync -avh --progress &lt;src&gt;/ &lt;dst&gt;/</code></td>
+<td>Copy with progress, the trailing <code>/</code> copies the content, not the folder</td>
+</tr>
+<tr>
+<td><code>rsync -avh --delete &lt;src&gt;/ &lt;dst&gt;/</code></td>
+<td>Mirror, deletes files in <code>&lt;dst&gt;</code> that are not in <code>&lt;src&gt;</code></td>
+</tr>
+<tr>
+<td><code>scp &lt;file&gt; &lt;user&gt;@&lt;host&gt;:&lt;path&gt;</code></td>
+<td>Copy a file to another machine</td>
+</tr>
+<tr>
+<td><code>sha256sum &lt;file&gt;</code></td>
+<td>Checksum to verify a download</td>
+</tr>
+</tbody>
+</table>
+<h2 id="processes-and-services">Processes and Services<a class="headerlink" href="#processes-and-services" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>htop</code></td>
+<td>Interactive process list (<code>sudo apt install htop</code>)</td>
+</tr>
+<tr>
+<td><code>pgrep -a &lt;name&gt;</code></td>
+<td>Find processes by name with their PID</td>
+</tr>
+<tr>
+<td><code>kill &lt;pid&gt;</code> / <code>kill -9 &lt;pid&gt;</code></td>
+<td>Stop a process / force it</td>
+</tr>
+<tr>
+<td><code>pkill &lt;name&gt;</code></td>
+<td>Stop processes by name</td>
+</tr>
+<tr>
+<td><code>systemctl status &lt;service&gt;</code></td>
+<td>Show state and the last log lines</td>
+</tr>
+<tr>
+<td><code>sudo systemctl restart &lt;service&gt;</code></td>
+<td>Restart a service</td>
+</tr>
+<tr>
+<td><code>sudo systemctl enable --now &lt;service&gt;</code></td>
+<td>Start now and at every boot</td>
+</tr>
+<tr>
+<td><code>systemctl --failed</code></td>
+<td>List failed services</td>
+</tr>
+<tr>
+<td><code>journalctl -u &lt;service&gt; -f</code></td>
+<td>Follow the log of a service</td>
+</tr>
+<tr>
+<td><code>journalctl -b -p err</code></td>
+<td>Errors since the last boot</td>
+</tr>
+<tr>
+<td><code>sudo journalctl --vacuum-time=2weeks</code></td>
+<td>Delete logs older than two weeks</td>
+</tr>
+</tbody>
+</table>
+<h2 id="network">Network<a class="headerlink" href="#network" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ip -br a</code></td>
+<td>Interfaces and their IP addresses</td>
+</tr>
+<tr>
+<td><code>ip r</code></td>
+<td>Routes, the <code>default via</code> line is the gateway</td>
+</tr>
+<tr>
+<td><code>sudo ss -tulpn</code></td>
+<td>Listening ports with the process using them</td>
+</tr>
+<tr>
+<td><code>nc -zv &lt;host&gt; &lt;port&gt;</code></td>
+<td>Check if a port is reachable</td>
+</tr>
+<tr>
+<td><code>dig +short &lt;domain&gt;</code></td>
+<td>Resolve a domain name</td>
+</tr>
+<tr>
+<td><code>curl -I &lt;url&gt;</code></td>
+<td>Show only the HTTP headers</td>
+</tr>
+</tbody>
+</table>
+<h2 id="system-info">System Info<a class="headerlink" href="#system-info" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>cat /etc/os-release</code></td>
+<td>Distribution and version</td>
+</tr>
+<tr>
+<td><code>uname -r</code></td>
+<td>Kernel version</td>
+</tr>
+<tr>
+<td><code>free -h</code></td>
+<td>Memory usage</td>
+</tr>
+<tr>
+<td><code>lscpu</code> / <code>lsusb</code> / <code>lspci</code></td>
+<td>CPU / USB devices / PCI devices</td>
+</tr>
+<tr>
+<td><code>sudo dmesg -w</code></td>
+<td>Follow kernel messages, e.g. when plugging in a drive</td>
+</tr>
+<tr>
+<td><code>sudo smartctl -a /dev/&lt;sdX&gt;</code></td>
+<td>Disk health (<code>sudo apt install smartmontools</code>)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="packages">Packages<a class="headerlink" href="#packages" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>apt list --upgradable</code></td>
+<td>Show available updates</td>
+</tr>
+<tr>
+<td><code>apt policy &lt;package&gt;</code></td>
+<td>Installed and available version</td>
+</tr>
+<tr>
+<td><code>dpkg -L &lt;package&gt;</code></td>
+<td>List the files of a package</td>
+</tr>
+<tr>
+<td><code>dpkg -S &lt;path&gt;</code></td>
+<td>Find the package a file belongs to</td>
+</tr>
+<tr>
+<td><code>sudo apt autoremove --purge</code></td>
+<td>Remove unused packages and their config</td>
+</tr>
+<tr>
+<td><code>sudo apt-mark hold &lt;package&gt;</code></td>
+<td>Keep a package at its version, <code>unhold</code> to undo</td>
+</tr>
+</tbody>
+</table>
+<h2 id="shell">Shell<a class="headerlink" href="#shell" title="Permanent link">&para;</a></h2>
+<p>Works in bash and zsh.</p>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Ctrl+r</code></td>
+<td>Search the command history</td>
+</tr>
+<tr>
+<td><code>sudo !!</code></td>
+<td>Run the last command again with sudo</td>
+</tr>
+<tr>
+<td><code>!$</code></td>
+<td>Last argument of the previous command</td>
+</tr>
+<tr>
+<td><code>cd -</code></td>
+<td>Go back to the previous folder</td>
+</tr>
+<tr>
+<td><code>Ctrl+a</code> / <code>Ctrl+e</code></td>
+<td>Jump to the start / end of the line</td>
+</tr>
+<tr>
+<td><code>Ctrl+u</code> / <code>Ctrl+k</code></td>
+<td>Delete to the start (zsh: whole line) / end of the line</td>
+</tr>
+<tr>
+<td><code>Ctrl+w</code></td>
+<td>Delete the word before the cursor</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.top", "toc.integrate", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
