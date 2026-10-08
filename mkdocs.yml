@@ -1,0 +1,36 @@
+site_name: tmux Cheat Sheet
+site_author: Yanick Spichty
+site_url: https://yanick.spichty.org/tmux-cheatsheet/
+
+theme:
+  name: material
+  palette:
+    scheme: slate
+    primary: blue grey
+    accent: light blue
+  features:
+    - navigation.top
+    - toc.integrate
+    - content.code.copy
+
+plugins:
+  - search
+
+extra:
+  generator: false
+
+extra_css:
+  - stylesheets/extra.css
+
+markdown_extensions:
+  - tables
+  - admonition
+  - toc:
+      permalink: true
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.superfences
+
+nav:
+  - Cheat Sheet: index.md
