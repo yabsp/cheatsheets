@@ -5,9 +5,8 @@ then press the key. Commands starting with `:` are typed into the command
 prompt, which opens with `Ctrl+b :`.
 
 !!! note "Version"
-    Checked in October 2026 against tmux 3.8. Everything without a version
-    mark also works in tmux 3.4. Check yours with `tmux -V`, distributions
-    often ship older versions.
+    tmux 3.8. Everything without a version mark also works in tmux 3.4.
+    Check yours with `tmux -V`, distributions often ship older versions.
 
 ## Sessions
 

@@ -4,11 +4,6 @@ Useful commands that are easy to forget. Values in `<angle brackets>` are
 placeholders. Disk setup with fstab, SSH, firewall and Docker are covered in
 detail in the [Media Server Guide](/media-server-guide/).
 
-!!! note "Version"
-    Checked in October 2026 on Ubuntu 24.04 (util-linux 2.39). The commands
-    are standard on Debian based systems, package names are for Debian and
-    Ubuntu.
-
 ## Disk Usage
 
 | Command | Description |

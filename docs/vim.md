@@ -6,10 +6,9 @@ and `.` repeats the last change. Commands starting with `:` are typed in normal
 mode and confirmed with `Enter`.
 
 !!! note "Version"
-    Checked in October 2026 against Vim 9.2 and Neovim 0.12. Everything
-    without a version mark also works in Vim 9.0. Check yours with
-    `vim --version` or `nvim --version`. Differences are listed in
-    [Vim vs Neovim](#vim-vs-neovim).
+    Vim 9.2 and Neovim 0.12. Everything without a version mark also works
+    in Vim 9.0. Check yours with `vim --version` or `nvim --version`.
+    Differences are listed in [Vim vs Neovim](#vim-vs-neovim).
 
 ## Coming From an IDE
 
