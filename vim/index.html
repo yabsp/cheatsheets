@@ -1,0 +1,1526 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="Yanick Spichty">
+      
+      
+        <link rel="canonical" href="https://yanick.spichty.org/cheatsheets/vim/">
+      
+      
+        <link rel="prev" href="../tmux/">
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.4">
+    
+    
+      
+        <title>Vim - Cheat Sheets</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="blue-grey" data-md-color-accent="light-blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#vim-cheat-sheet" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Cheat Sheets" class="md-header__button md-logo" aria-label="Cheat Sheets" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Cheat Sheets
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Vim
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Cheat Sheets" class="md-nav__button md-logo" aria-label="Cheat Sheets" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Cheat Sheets
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tmux/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    tmux
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Vim
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Vim
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#coming-from-an-ide" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Coming From an IDE
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#basics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Basics
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#moving" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Moving
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#text-objects" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Text Objects
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#editing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Editing
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#visual-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Visual Mode
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#copy-and-paste" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Copy and Paste
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#search" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Search
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#replace" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Replace
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#files-splits-and-project-search" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Files, Splits and Project Search
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#macros" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Macros
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#insert-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Insert Mode
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#config-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Config File
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vim-vs-neovim" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Vim vs Neovim
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="vim-cheat-sheet">Vim Cheat Sheet<a class="headerlink" href="#vim-cheat-sheet" title="Permanent link">&para;</a></h1>
+<p>Most Vim commands are built from an operator and a motion or text object:
+<code>d</code> (delete) + <code>iw</code> (inner word) = <code>diw</code>. A count in front repeats it (<code>3dd</code>)
+and <code>.</code> repeats the last change. Commands starting with <code>:</code> are typed in normal
+mode and confirmed with <code>Enter</code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Version</p>
+<p>Checked in October 2026 against Vim 9.2 and Neovim 0.12. Everything
+without a version mark also works in Vim 9.0. Check yours with
+<code>vim --version</code> or <code>nvim --version</code>. Differences are listed in
+<a href="#vim-vs-neovim">Vim vs Neovim</a>.</p>
+</div>
+<h2 id="coming-from-an-ide">Coming From an IDE<a class="headerlink" href="#coming-from-an-ide" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>IntelliJ (Linux keymap)</th>
+<th>Vim</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Copy / cut / paste</td>
+<td><code>y</code> / <code>d</code> / <code>p</code></td>
+</tr>
+<tr>
+<td>Undo / redo</td>
+<td><code>u</code> / <code>Ctrl+r</code></td>
+</tr>
+<tr>
+<td>Duplicate line (<code>Ctrl+d</code>)</td>
+<td><code>yyp</code></td>
+</tr>
+<tr>
+<td>Delete line (<code>Ctrl+y</code>)</td>
+<td><code>dd</code></td>
+</tr>
+<tr>
+<td>Move line up / down (<code>Alt+Shift+Up/Down</code>)</td>
+<td><code>:m -2</code> / <code>:m +1</code></td>
+</tr>
+<tr>
+<td>Comment line (<code>Ctrl+/</code>)</td>
+<td><code>gcc</code></td>
+</tr>
+<tr>
+<td>Find (<code>Ctrl+f</code>)</td>
+<td><code>/text</code></td>
+</tr>
+<tr>
+<td>Replace (<code>Ctrl+r</code>)</td>
+<td><code>:%s/old/new/gc</code></td>
+</tr>
+<tr>
+<td>Find in files (<code>Ctrl+Shift+f</code>)</td>
+<td><code>:vimgrep /text/ **/*</code></td>
+</tr>
+<tr>
+<td>Extend selection (<code>Ctrl+w</code>)</td>
+<td><code>viw</code>, <code>vi(</code>, <code>vip</code>, repeat <code>i(</code> to grow</td>
+</tr>
+<tr>
+<td>Select next occurrence (<code>Alt+j</code>)</td>
+<td><code>*</code>, then <code>cgn</code>, then <code>.</code></td>
+</tr>
+<tr>
+<td>Go to line (<code>Ctrl+g</code>)</td>
+<td><code>:42</code> or <code>42G</code></td>
+</tr>
+<tr>
+<td>Go to declaration (<code>Ctrl+b</code>)</td>
+<td><code>gd</code></td>
+</tr>
+<tr>
+<td>Back / forward (<code>Ctrl+Alt+Left/Right</code>)</td>
+<td><code>Ctrl+o</code> / <code>Ctrl+i</code></td>
+</tr>
+<tr>
+<td>Go to file (<code>Ctrl+Shift+n</code>)</td>
+<td><code>:find name</code></td>
+</tr>
+<tr>
+<td>Recent files (<code>Ctrl+e</code>)</td>
+<td><code>:browse oldfiles</code></td>
+</tr>
+<tr>
+<td>Reformat file (<code>Ctrl+Alt+l</code>)</td>
+<td><code>gg=G</code></td>
+</tr>
+<tr>
+<td>Rename (<code>Shift+F6</code>)</td>
+<td><code>:%s/\&lt;old\&gt;/new/gc</code></td>
+</tr>
+<tr>
+<td>Clipboard history (<code>Ctrl+Shift+v</code>)</td>
+<td><code>:reg</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="basics">Basics<a class="headerlink" href="#basics" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>i</code> / <code>a</code></td>
+<td>Insert before / after the cursor</td>
+</tr>
+<tr>
+<td><code>I</code> / <code>A</code></td>
+<td>Insert at the start / end of the line</td>
+</tr>
+<tr>
+<td><code>o</code> / <code>O</code></td>
+<td>Open a new line below / above</td>
+</tr>
+<tr>
+<td><code>Esc</code></td>
+<td>Back to normal mode</td>
+</tr>
+<tr>
+<td><code>:w</code></td>
+<td>Save</td>
+</tr>
+<tr>
+<td><code>:q</code> / <code>:q!</code></td>
+<td>Quit / quit and discard changes</td>
+</tr>
+<tr>
+<td><code>:wq</code> or <code>ZZ</code></td>
+<td>Save and quit</td>
+</tr>
+<tr>
+<td><code>:wa</code> / <code>:qa</code></td>
+<td>Save all / quit all</td>
+</tr>
+<tr>
+<td><code>u</code> / <code>Ctrl+r</code></td>
+<td>Undo / redo</td>
+</tr>
+<tr>
+<td><code>.</code></td>
+<td>Repeat the last change</td>
+</tr>
+<tr>
+<td><code>:earlier 5m</code> / <code>:later 5m</code></td>
+<td>Go back / forward in time</td>
+</tr>
+<tr>
+<td><code>:h ciw</code></td>
+<td>Help for any command</td>
+</tr>
+</tbody>
+</table>
+<h2 id="moving">Moving<a class="headerlink" href="#moving" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>h</code> <code>j</code> <code>k</code> <code>l</code></td>
+<td>Left, down, up, right</td>
+</tr>
+<tr>
+<td><code>w</code> / <code>b</code> / <code>e</code></td>
+<td>Next word / previous word / end of word</td>
+</tr>
+<tr>
+<td><code>W</code> / <code>B</code> / <code>E</code></td>
+<td>Same, but words are only split by spaces</td>
+</tr>
+<tr>
+<td><code>0</code> / <code>^</code> / <code>$</code></td>
+<td>Line start / first character / line end</td>
+</tr>
+<tr>
+<td><code>gg</code> / <code>G</code></td>
+<td>First / last line</td>
+</tr>
+<tr>
+<td><code>42G</code> or <code>:42</code></td>
+<td>Go to line 42</td>
+</tr>
+<tr>
+<td><code>fx</code> / <code>Fx</code></td>
+<td>Jump to the next / previous <code>x</code> in the line</td>
+</tr>
+<tr>
+<td><code>tx</code> / <code>Tx</code></td>
+<td>Jump to just before the next / after the previous <code>x</code></td>
+</tr>
+<tr>
+<td><code>;</code> / <code>,</code></td>
+<td>Repeat the last <code>f</code> or <code>t</code> forward / backward</td>
+</tr>
+<tr>
+<td><code>%</code></td>
+<td>Jump to the matching bracket</td>
+</tr>
+<tr>
+<td><code>{</code> / <code>}</code></td>
+<td>Previous / next empty line</td>
+</tr>
+<tr>
+<td><code>Ctrl+d</code> / <code>Ctrl+u</code></td>
+<td>Half a page down / up</td>
+</tr>
+<tr>
+<td><code>zz</code></td>
+<td>Center the current line on screen</td>
+</tr>
+<tr>
+<td><code>gd</code></td>
+<td>Go to the local definition</td>
+</tr>
+<tr>
+<td><code>gf</code></td>
+<td>Open the file under the cursor</td>
+</tr>
+<tr>
+<td><code>Ctrl+o</code> / <code>Ctrl+i</code></td>
+<td>Jump back / forward</td>
+</tr>
+<tr>
+<td><code>`.</code></td>
+<td>Go to the last change</td>
+</tr>
+<tr>
+<td><code>gi</code></td>
+<td>Continue inserting where you last stopped</td>
+</tr>
+<tr>
+<td><code>ma</code> / <code>`a</code></td>
+<td>Set mark <code>a</code> / jump back to it</td>
+</tr>
+</tbody>
+</table>
+<h2 id="text-objects">Text Objects<a class="headerlink" href="#text-objects" title="Permanent link">&para;</a></h2>
+<p>Use them after an operator (<code>d</code>, <code>c</code>, <code>y</code>, <code>v</code>, <code>&gt;</code>, <code>gU</code> ...). <code>i</code> means
+inside, <code>a</code> includes the delimiters or surrounding space.</p>
+<table>
+<thead>
+<tr>
+<th>Object</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>iw</code> / <code>aw</code></td>
+<td>Word</td>
+</tr>
+<tr>
+<td><code>i"</code> / <code>a"</code></td>
+<td>Double quotes, also <code>'</code> and <code>`</code></td>
+</tr>
+<tr>
+<td><code>i(</code> / <code>a(</code></td>
+<td>Parentheses, also <code>ib</code></td>
+</tr>
+<tr>
+<td><code>i{</code> / <code>a{</code></td>
+<td>Braces, also <code>iB</code></td>
+</tr>
+<tr>
+<td><code>i[</code> / <code>a[</code></td>
+<td>Brackets</td>
+</tr>
+<tr>
+<td><code>i&lt;</code> / <code>a&lt;</code></td>
+<td>Angle brackets</td>
+</tr>
+<tr>
+<td><code>it</code> / <code>at</code></td>
+<td>HTML or XML tag</td>
+</tr>
+<tr>
+<td><code>ip</code> / <code>ap</code></td>
+<td>Paragraph</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Example</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ciw</code></td>
+<td>Change the word</td>
+</tr>
+<tr>
+<td><code>ci"</code></td>
+<td>Change the text in quotes, works from anywhere before them on the line</td>
+</tr>
+<tr>
+<td><code>da(</code></td>
+<td>Delete the parentheses and their content</td>
+</tr>
+<tr>
+<td><code>yi{</code></td>
+<td>Copy the content of a block</td>
+</tr>
+<tr>
+<td><code>dit</code></td>
+<td>Delete the content of a tag</td>
+</tr>
+<tr>
+<td><code>vip</code></td>
+<td>Select the paragraph</td>
+</tr>
+</tbody>
+</table>
+<h2 id="editing">Editing<a class="headerlink" href="#editing" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>x</code></td>
+<td>Delete the character</td>
+</tr>
+<tr>
+<td><code>rx</code></td>
+<td>Replace the character with <code>x</code></td>
+</tr>
+<tr>
+<td><code>R</code></td>
+<td>Overwrite mode</td>
+</tr>
+<tr>
+<td><code>dd</code> / <code>D</code></td>
+<td>Delete the line / to the end of the line</td>
+</tr>
+<tr>
+<td><code>cc</code> / <code>C</code></td>
+<td>Change the line / to the end of the line</td>
+</tr>
+<tr>
+<td><code>dw</code> / <code>cw</code></td>
+<td>Delete / change to the end of the word</td>
+</tr>
+<tr>
+<td><code>J</code></td>
+<td>Join the line below</td>
+</tr>
+<tr>
+<td><code>&gt;&gt;</code> / <code>&lt;&lt;</code></td>
+<td>Indent / unindent</td>
+</tr>
+<tr>
+<td><code>==</code> / <code>gg=G</code></td>
+<td>Reindent the line / the whole file</td>
+</tr>
+<tr>
+<td><code>~</code></td>
+<td>Toggle case of the character</td>
+</tr>
+<tr>
+<td><code>gUiw</code> / <code>guiw</code></td>
+<td>Uppercase / lowercase the word</td>
+</tr>
+<tr>
+<td><code>Ctrl+a</code> / <code>Ctrl+x</code></td>
+<td>Increment / decrement the number under the cursor</td>
+</tr>
+<tr>
+<td><code>yyp</code></td>
+<td>Duplicate the line</td>
+</tr>
+<tr>
+<td><code>:m +1</code> / <code>:m -2</code></td>
+<td>Move the line down / up</td>
+</tr>
+<tr>
+<td><code>gcc</code> / <code>gcip</code></td>
+<td>Toggle comment on the line / paragraph (Vim 9.1.0375+)</td>
+</tr>
+</tbody>
+</table>
+<p><code>gc</code> is built into Neovim. In Vim 9.1.0375 and later run <code>:packadd comment</code>
+first or add it to the <a href="#config-file">config file</a>.</p>
+<h2 id="visual-mode">Visual Mode<a class="headerlink" href="#visual-mode" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>v</code> / <code>V</code> / <code>Ctrl+v</code></td>
+<td>Select characters / lines / a block</td>
+</tr>
+<tr>
+<td><code>o</code></td>
+<td>Jump to the other end of the selection</td>
+</tr>
+<tr>
+<td><code>gv</code></td>
+<td>Reselect the last selection</td>
+</tr>
+<tr>
+<td><code>viw</code> / <code>vi(</code> / <code>vip</code></td>
+<td>Select a text object, repeat <code>i(</code> or <code>a(</code> to grow it</td>
+</tr>
+<tr>
+<td><code>y</code> / <code>d</code> / <code>c</code></td>
+<td>Copy / delete / change the selection</td>
+</tr>
+<tr>
+<td><code>p</code></td>
+<td>Replace the selection, the replaced text goes to the register</td>
+</tr>
+<tr>
+<td><code>P</code></td>
+<td>Replace the selection, keep the register for pasting again</td>
+</tr>
+<tr>
+<td><code>&gt;</code> / <code>&lt;</code></td>
+<td>Indent / unindent, <code>.</code> repeats</td>
+</tr>
+<tr>
+<td><code>=</code></td>
+<td>Reindent</td>
+</tr>
+<tr>
+<td><code>J</code></td>
+<td>Join the lines</td>
+</tr>
+<tr>
+<td><code>U</code> / <code>u</code> / <code>~</code></td>
+<td>Uppercase / lowercase / toggle case</td>
+</tr>
+<tr>
+<td><code>rx</code></td>
+<td>Replace every selected character with <code>x</code></td>
+</tr>
+<tr>
+<td><code>gc</code></td>
+<td>Toggle comment (Vim 9.1.0375+)</td>
+</tr>
+<tr>
+<td><code>:</code></td>
+<td>Run a command on the selected lines, shows <code>:'&lt;,'&gt;</code></td>
+</tr>
+<tr>
+<td><code>:m '&gt;+1</code> / <code>:m '&lt;-2</code></td>
+<td>Move the selected lines down / up</td>
+</tr>
+<tr>
+<td><code>:sort</code></td>
+<td>Sort the selected lines</td>
+</tr>
+<tr>
+<td><code>:norm A;</code></td>
+<td>Append <code>;</code> to every selected line</td>
+</tr>
+<tr>
+<td><code>g Ctrl+a</code></td>
+<td>Turn equal numbers into a sequence 1, 2, 3 ...</td>
+</tr>
+</tbody>
+</table>
+<p>Block selection (<code>Ctrl+v</code>) works like multiple cursors:</p>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>I</code>, type, <code>Esc</code></td>
+<td>Insert text at the start of the block on every line</td>
+</tr>
+<tr>
+<td><code>$A</code>, type, <code>Esc</code></td>
+<td>Append text at the end of every line</td>
+</tr>
+<tr>
+<td><code>c</code>, type, <code>Esc</code></td>
+<td>Change the block on every line</td>
+</tr>
+<tr>
+<td><code>d</code></td>
+<td>Delete the block</td>
+</tr>
+</tbody>
+</table>
+<h2 id="copy-and-paste">Copy and Paste<a class="headerlink" href="#copy-and-paste" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>yy</code> / <code>Y</code></td>
+<td>Copy the line</td>
+</tr>
+<tr>
+<td><code>yiw</code> / <code>y$</code> / <code>yip</code></td>
+<td>Copy the word / to the end of the line / the paragraph</td>
+</tr>
+<tr>
+<td><code>p</code> / <code>P</code></td>
+<td>Paste after / before the cursor</td>
+</tr>
+<tr>
+<td><code>gp</code> / <code>gP</code></td>
+<td>Same, but move the cursor after the pasted text</td>
+</tr>
+<tr>
+<td><code>]p</code></td>
+<td>Paste and match the current indentation</td>
+</tr>
+<tr>
+<td><code>"0p</code></td>
+<td>Paste the last copied text, even after deleting something</td>
+</tr>
+<tr>
+<td><code>"_dd</code></td>
+<td>Delete without overwriting the register</td>
+</tr>
+<tr>
+<td><code>"ayy</code> / <code>"ap</code></td>
+<td>Copy into / paste from register <code>a</code></td>
+</tr>
+<tr>
+<td><code>"Ayy</code></td>
+<td>Append to register <code>a</code></td>
+</tr>
+<tr>
+<td><code>"+y</code> / <code>"+p</code></td>
+<td>Copy to / paste from the system clipboard</td>
+</tr>
+<tr>
+<td><code>:reg</code></td>
+<td>Show all registers</td>
+</tr>
+<tr>
+<td><code>Ctrl+r 0</code></td>
+<td>Paste the last copied text in insert mode</td>
+</tr>
+<tr>
+<td><code>Ctrl+r +</code></td>
+<td>Paste the clipboard in insert mode</td>
+</tr>
+</tbody>
+</table>
+<p>Vim needs a build with clipboard support for <code>"+</code>, check with
+<code>vim --version | grep clipboard</code>. On Debian and Ubuntu install <code>vim-gtk3</code>
+instead of <code>vim</code>. Neovim needs <code>wl-clipboard</code> (Wayland) or <code>xclip</code> (X11).</p>
+<h2 id="search">Search<a class="headerlink" href="#search" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/text</code> / <code>?text</code></td>
+<td>Search forward / backward</td>
+</tr>
+<tr>
+<td><code>n</code> / <code>N</code></td>
+<td>Next / previous match</td>
+</tr>
+<tr>
+<td><code>*</code> / <code>#</code></td>
+<td>Search the word under the cursor forward / backward</td>
+</tr>
+<tr>
+<td><code>g*</code></td>
+<td>Same as <code>*</code>, but also matches inside other words</td>
+</tr>
+<tr>
+<td><code>/\&lt;word\&gt;</code></td>
+<td>Whole word only</td>
+</tr>
+<tr>
+<td><code>/text\c</code></td>
+<td>Ignore case for this search</td>
+</tr>
+<tr>
+<td><code>/\v(foo)+</code></td>
+<td>Very magic: <code>( ) + ? { }</code> work without backslashes</td>
+</tr>
+<tr>
+<td><code>/</code> then <code>Up</code></td>
+<td>Search history</td>
+</tr>
+<tr>
+<td><code>:noh</code></td>
+<td>Clear the highlight</td>
+</tr>
+</tbody>
+</table>
+<h2 id="replace">Replace<a class="headerlink" href="#replace" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:s/old/new/</code></td>
+<td>Replace the first match in the line</td>
+</tr>
+<tr>
+<td><code>:s/old/new/g</code></td>
+<td>Replace all matches in the line</td>
+</tr>
+<tr>
+<td><code>:%s/old/new/g</code></td>
+<td>Replace all matches in the file</td>
+</tr>
+<tr>
+<td><code>:%s/old/new/gc</code></td>
+<td>Ask for each match: <code>y</code> yes, <code>n</code> no, <code>a</code> all, <code>q</code> quit</td>
+</tr>
+<tr>
+<td><code>:%s/old/new/gi</code></td>
+<td>Ignore case</td>
+</tr>
+<tr>
+<td><code>:%s/\&lt;old\&gt;/new/g</code></td>
+<td>Whole words only</td>
+</tr>
+<tr>
+<td><code>:'&lt;,'&gt;s/old/new/g</code></td>
+<td>Replace in the selected lines</td>
+</tr>
+<tr>
+<td><code>:'&lt;,'&gt;s/\%Vold/new/g</code></td>
+<td>Replace only inside the exact selection</td>
+</tr>
+<tr>
+<td><code>:%s//new/g</code></td>
+<td>Reuse the last search, e.g. after <code>*</code></td>
+</tr>
+<tr>
+<td><code>:%s/old/&amp;s/g</code></td>
+<td><code>&amp;</code> inserts the whole match</td>
+</tr>
+<tr>
+<td><code>:%s/\v(\w+)-(\w+)/\2-\1/g</code></td>
+<td>Groups: turns <code>foo-bar</code> into <code>bar-foo</code></td>
+</tr>
+<tr>
+<td><code>:%s/, /,\r/g</code></td>
+<td><code>\r</code> inserts a line break</td>
+</tr>
+<tr>
+<td><code>:%s/\w\+/\u&amp;/g</code></td>
+<td><code>\u</code> uppercases the next character, <code>\U</code> / <code>\L</code> all</td>
+</tr>
+<tr>
+<td><code>&amp;</code> / <code>g&amp;</code></td>
+<td>Repeat the last replace on this line / on all lines</td>
+</tr>
+<tr>
+<td><code>:g/text/d</code></td>
+<td>Delete every line containing <code>text</code></td>
+</tr>
+<tr>
+<td><code>:v/text/d</code></td>
+<td>Delete every line not containing <code>text</code></td>
+</tr>
+<tr>
+<td><code>:g/text/norm A;</code></td>
+<td>Run normal mode keys on every matching line</td>
+</tr>
+</tbody>
+</table>
+<p>Replace matches one by one: <code>*</code> (or <code>/text</code>), then <code>cgn</code>, type the new text,
+<code>Esc</code>, then press <code>.</code> for each next match and <code>n</code> to skip one.</p>
+<h2 id="files-splits-and-project-search">Files, Splits and Project Search<a class="headerlink" href="#files-splits-and-project-search" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:e file</code></td>
+<td>Open a file</td>
+</tr>
+<tr>
+<td><code>:find name</code></td>
+<td>Find and open a file in subfolders, <code>Tab</code> completes</td>
+</tr>
+<tr>
+<td><code>:Ex</code></td>
+<td>File explorer</td>
+</tr>
+<tr>
+<td><code>:ls</code></td>
+<td>List open files (buffers)</td>
+</tr>
+<tr>
+<td><code>:b name</code></td>
+<td>Switch to a buffer by part of its name</td>
+</tr>
+<tr>
+<td><code>:bn</code> / <code>:bp</code> / <code>:bd</code></td>
+<td>Next / previous / close buffer</td>
+</tr>
+<tr>
+<td><code>Ctrl+^</code></td>
+<td>Switch between the last two files</td>
+</tr>
+<tr>
+<td><code>:sp</code> / <code>:vs</code></td>
+<td>Split horizontal / vertical</td>
+</tr>
+<tr>
+<td><code>Ctrl+w h/j/k/l</code></td>
+<td>Move to the split in that direction</td>
+</tr>
+<tr>
+<td><code>Ctrl+w q</code> / <code>Ctrl+w o</code></td>
+<td>Close the split / close all other splits</td>
+</tr>
+<tr>
+<td><code>Ctrl+w =</code></td>
+<td>Make all splits equal size</td>
+</tr>
+<tr>
+<td><code>:tabnew</code> / <code>gt</code> / <code>gT</code></td>
+<td>New tab / next tab / previous tab</td>
+</tr>
+<tr>
+<td><code>:vimgrep /text/ **/*.py</code></td>
+<td>Search in files, results go to the quickfix list</td>
+</tr>
+<tr>
+<td><code>:copen</code> / <code>:cclose</code></td>
+<td>Open / close the result list</td>
+</tr>
+<tr>
+<td><code>:cn</code> / <code>:cp</code></td>
+<td>Next / previous result</td>
+</tr>
+<tr>
+<td><code>:cdo s/old/new/gc</code></td>
+<td>Replace in every result line</td>
+</tr>
+<tr>
+<td><code>:cfdo %s/old/new/g</code></td>
+<td>Replace in every result file</td>
+</tr>
+<tr>
+<td><code>:wa</code></td>
+<td>Save all files after a project wide replace</td>
+</tr>
+</tbody>
+</table>
+<h2 id="macros">Macros<a class="headerlink" href="#macros" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>qa</code></td>
+<td>Start recording into register <code>a</code></td>
+</tr>
+<tr>
+<td><code>q</code></td>
+<td>Stop recording</td>
+</tr>
+<tr>
+<td><code>@a</code> / <code>10@a</code></td>
+<td>Play once / 10 times</td>
+</tr>
+<tr>
+<td><code>@@</code></td>
+<td>Play the last macro again</td>
+</tr>
+<tr>
+<td><code>:'&lt;,'&gt;norm @a</code></td>
+<td>Play on every selected line</td>
+</tr>
+<tr>
+<td><code>@:</code></td>
+<td>Repeat the last <code>:</code> command</td>
+</tr>
+</tbody>
+</table>
+<h2 id="insert-mode">Insert Mode<a class="headerlink" href="#insert-mode" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Ctrl+n</code> / <code>Ctrl+p</code></td>
+<td>Complete a word from open files</td>
+</tr>
+<tr>
+<td><code>Ctrl+x Ctrl+f</code></td>
+<td>Complete a file path</td>
+</tr>
+<tr>
+<td><code>Ctrl+x Ctrl+l</code></td>
+<td>Complete a whole line</td>
+</tr>
+<tr>
+<td><code>Ctrl+w</code></td>
+<td>Delete the word before the cursor</td>
+</tr>
+<tr>
+<td><code>Ctrl+r a</code></td>
+<td>Insert register <code>a</code></td>
+</tr>
+<tr>
+<td><code>Ctrl+o</code></td>
+<td>Run one normal mode command, then continue inserting</td>
+</tr>
+<tr>
+<td><code>Ctrl+t</code> / <code>Ctrl+d</code></td>
+<td>Indent / unindent the line</td>
+</tr>
+</tbody>
+</table>
+<h2 id="config-file">Config File<a class="headerlink" href="#config-file" title="Permanent link">&para;</a></h2>
+<p>A minimal starting point for <code>~/.vimrc</code>. Vim 9.2 also reads
+<code>~/.config/vim/vimrc</code>. Neovim already has most of these defaults and uses
+<code>~/.config/nvim/init.vim</code> (or <code>init.lua</code>) instead.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c">&quot; A vimrc disables Vim&#39;s defaults (syntax, incsearch, mouse ...), load them</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>unlet<span class="p">!</span> skip_defaults_vim
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>source $VIMRUNTIME/defaults.<span class="k">vim</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="k">set</span> <span class="k">number</span> <span class="nb">relativenumber</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="k">set</span> <span class="nb">ignorecase</span> <span class="nb">smartcase</span>           <span class="c">&quot; Case sensitive only with capitals</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="k">set</span> <span class="nb">hlsearch</span>                       <span class="c">&quot; Highlight all matches</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="k">set</span> <span class="nb">expandtab</span> <span class="nb">shiftwidth</span><span class="p">=</span><span class="m">4</span> <span class="nb">tabstop</span><span class="p">=</span><span class="m">4</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="k">set</span> <span class="nb">path</span><span class="p">+=</span>**                       <span class="c">&quot; :find searches subfolders</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="k">set</span> <span class="nb">clipboard</span><span class="p">=</span>unnamedplus          <span class="c">&quot; y and p use the system clipboard</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="c">&quot; gc / gcc to toggle comments (Vim 9.1.0375 and later)</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="k">silent</span><span class="p">!</span> packadd<span class="p">!</span> comment
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="c">&quot; Ctrl+l also clears the search highlight</span>
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="nb">nnoremap</span> <span class="p">&lt;</span><span class="k">silent</span><span class="p">&gt;</span> <span class="p">&lt;</span>C<span class="p">-</span><span class="k">l</span><span class="p">&gt;</span> :<span class="k">nohlsearch</span><span class="p">&lt;</span>CR<span class="p">&gt;&lt;</span>C<span class="p">-</span><span class="k">l</span><span class="p">&gt;</span>
+</code></pre></div>
+<h2 id="vim-vs-neovim">Vim vs Neovim<a class="headerlink" href="#vim-vs-neovim" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Topic</th>
+<th>Vim 9.2</th>
+<th>Neovim 0.12</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Y</code></td>
+<td>Copies the line</td>
+<td>Copies to the end of the line</td>
+</tr>
+<tr>
+<td><code>gc</code> / <code>gcc</code></td>
+<td>Needs <code>:packadd comment</code></td>
+<td>Built in</td>
+</tr>
+<tr>
+<td>Clear highlight</td>
+<td><code>:noh</code></td>
+<td><code>:noh</code> or <code>Ctrl+l</code></td>
+</tr>
+<tr>
+<td>System clipboard</td>
+<td>Needs a <code>+clipboard</code> build</td>
+<td>Needs <code>wl-clipboard</code> or <code>xclip</code></td>
+</tr>
+<tr>
+<td>Config</td>
+<td><code>~/.vimrc</code></td>
+<td><code>~/.config/nvim/init.lua</code></td>
+</tr>
+</tbody>
+</table>
+<p>With a language server set up, Neovim 0.11 and later adds IDE features with
+default keys:</p>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Ctrl+]</code></td>
+<td>Go to definition</td>
+</tr>
+<tr>
+<td><code>K</code></td>
+<td>Show documentation</td>
+</tr>
+<tr>
+<td><code>grn</code></td>
+<td>Rename the symbol</td>
+</tr>
+<tr>
+<td><code>grr</code></td>
+<td>List references</td>
+</tr>
+<tr>
+<td><code>gri</code></td>
+<td>Go to implementation</td>
+</tr>
+<tr>
+<td><code>gra</code></td>
+<td>Code actions</td>
+</tr>
+<tr>
+<td><code>gO</code></td>
+<td>List symbols in the file</td>
+</tr>
+<tr>
+<td><code>[d</code> / <code>]d</code></td>
+<td>Previous / next diagnostic</td>
+</tr>
+<tr>
+<td><code>Ctrl+s</code></td>
+<td>Signature help in insert mode</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.top", "toc.integrate", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

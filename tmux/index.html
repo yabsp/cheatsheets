@@ -1,0 +1,957 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="Yanick Spichty">
+      
+      
+        <link rel="canonical" href="https://yanick.spichty.org/cheatsheets/tmux/">
+      
+      
+        <link rel="prev" href="..">
+      
+      
+        <link rel="next" href="../vim/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.4">
+    
+    
+      
+        <title>tmux - Cheat Sheets</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="blue-grey" data-md-color-accent="light-blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#tmux-cheat-sheet" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Cheat Sheets" class="md-header__button md-logo" aria-label="Cheat Sheets" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Cheat Sheets
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              tmux
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Cheat Sheets" class="md-nav__button md-logo" aria-label="Cheat Sheets" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Cheat Sheets
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    tmux
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    tmux
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#sessions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sessions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#windows" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Windows
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#panes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Panes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#copy-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Copy Mode
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#buffers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Buffers
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#misc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Misc
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#config-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Config File
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#help" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Help
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vim/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Vim
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="tmux-cheat-sheet">tmux Cheat Sheet<a class="headerlink" href="#tmux-cheat-sheet" title="Permanent link">&para;</a></h1>
+<p>All key bindings use the default prefix <code>Ctrl+b</code>: press <code>Ctrl+b</code>, release it,
+then press the key. Commands starting with <code>:</code> are typed into the command
+prompt, which opens with <code>Ctrl+b :</code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Version</p>
+<p>Checked in October 2026 against tmux 3.8. Everything without a version
+mark also works in tmux 3.4. Check yours with <code>tmux -V</code>, distributions
+often ship older versions.</p>
+</div>
+<h2 id="sessions">Sessions<a class="headerlink" href="#sessions" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>tmux</code></td>
+<td>Start a new session</td>
+</tr>
+<tr>
+<td><code>tmux new -s mysession</code></td>
+<td>Start a new session named <code>mysession</code></td>
+</tr>
+<tr>
+<td><code>tmux new -A -s mysession</code></td>
+<td>Attach to <code>mysession</code>, create it if it does not exist</td>
+</tr>
+<tr>
+<td><code>:new</code></td>
+<td>Start a new session from inside tmux</td>
+</tr>
+<tr>
+<td><code>tmux ls</code></td>
+<td>List all sessions</td>
+</tr>
+<tr>
+<td><code>tmux a</code></td>
+<td>Attach to the last session</td>
+</tr>
+<tr>
+<td><code>tmux a -t mysession</code></td>
+<td>Attach to <code>mysession</code></td>
+</tr>
+<tr>
+<td><code>:attach -d</code></td>
+<td>Detach all other clients from the current session</td>
+</tr>
+<tr>
+<td><code>tmux kill-session -t mysession</code></td>
+<td>Kill <code>mysession</code></td>
+</tr>
+<tr>
+<td><code>tmux kill-session -a</code></td>
+<td>Kill all sessions except the current one</td>
+</tr>
+<tr>
+<td><code>tmux kill-session -a -t mysession</code></td>
+<td>Kill all sessions except <code>mysession</code></td>
+</tr>
+<tr>
+<td><code>:kill-session</code></td>
+<td>Kill the current session</td>
+</tr>
+<tr>
+<td><code>tmux kill-server</code></td>
+<td>Kill the server and all sessions</td>
+</tr>
+<tr>
+<td><code>Ctrl+b d</code></td>
+<td>Detach from the session</td>
+</tr>
+<tr>
+<td><code>Ctrl+b $</code></td>
+<td>Rename the session</td>
+</tr>
+<tr>
+<td><code>Ctrl+b s</code></td>
+<td>Show all sessions</td>
+</tr>
+<tr>
+<td><code>Ctrl+b w</code></td>
+<td>Show all sessions and their windows</td>
+</tr>
+<tr>
+<td><code>Ctrl+b (</code></td>
+<td>Previous session</td>
+</tr>
+<tr>
+<td><code>Ctrl+b )</code></td>
+<td>Next session</td>
+</tr>
+<tr>
+<td><code>Ctrl+b L</code></td>
+<td>Last used session</td>
+</tr>
+<tr>
+<td><code>Ctrl+b Shift+Tab</code></td>
+<td>Quick session switcher (3.8+)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="windows">Windows<a class="headerlink" href="#windows" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>tmux new -s mysession -n mywindow</code></td>
+<td>Start a session with a named first window</td>
+</tr>
+<tr>
+<td><code>Ctrl+b c</code></td>
+<td>Create a window</td>
+</tr>
+<tr>
+<td><code>Ctrl+b ,</code></td>
+<td>Rename the window</td>
+</tr>
+<tr>
+<td><code>Ctrl+b &amp;</code></td>
+<td>Close the window</td>
+</tr>
+<tr>
+<td><code>Ctrl+b p</code></td>
+<td>Previous window</td>
+</tr>
+<tr>
+<td><code>Ctrl+b n</code></td>
+<td>Next window</td>
+</tr>
+<tr>
+<td><code>Ctrl+b l</code></td>
+<td>Last used window</td>
+</tr>
+<tr>
+<td><code>Ctrl+b 0</code> ... <code>9</code></td>
+<td>Go to window by number</td>
+</tr>
+<tr>
+<td><code>Ctrl+b '</code></td>
+<td>Go to window by number, also above 9</td>
+</tr>
+<tr>
+<td><code>Ctrl+b f</code></td>
+<td>Find a window by name</td>
+</tr>
+<tr>
+<td><code>Ctrl+b Tab</code></td>
+<td>Quick window switcher (3.8+)</td>
+</tr>
+<tr>
+<td><code>Ctrl+b &lt;</code></td>
+<td>Open the window menu</td>
+</tr>
+<tr>
+<td><code>:swap-window -s 2 -t 1</code></td>
+<td>Swap windows 2 and 1</td>
+</tr>
+<tr>
+<td><code>:swap-window -t -1</code></td>
+<td>Move the window one position to the left</td>
+</tr>
+<tr>
+<td><code>:move-window -t 5</code></td>
+<td>Move the window to number 5</td>
+</tr>
+<tr>
+<td><code>:move-window -r</code></td>
+<td>Renumber all windows without gaps</td>
+</tr>
+</tbody>
+</table>
+<h2 id="panes">Panes<a class="headerlink" href="#panes" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Ctrl+b %</code></td>
+<td>Split side by side (<code>:split-window -h</code>)</td>
+</tr>
+<tr>
+<td><code>Ctrl+b "</code></td>
+<td>Split top and bottom (<code>:split-window -v</code>)</td>
+</tr>
+<tr>
+<td><code>Ctrl+b Up/Down/Left/Right</code></td>
+<td>Move to the pane in that direction</td>
+</tr>
+<tr>
+<td><code>Ctrl+b o</code></td>
+<td>Next pane</td>
+</tr>
+<tr>
+<td><code>Ctrl+b ;</code></td>
+<td>Last used pane</td>
+</tr>
+<tr>
+<td><code>Ctrl+b q</code></td>
+<td>Show pane numbers, press a number to jump to it</td>
+</tr>
+<tr>
+<td><code>Ctrl+b z</code></td>
+<td>Zoom the pane in and out</td>
+</tr>
+<tr>
+<td><code>Ctrl+b {</code></td>
+<td>Swap with the previous pane</td>
+</tr>
+<tr>
+<td><code>Ctrl+b }</code></td>
+<td>Swap with the next pane</td>
+</tr>
+<tr>
+<td><code>Ctrl+b Space</code></td>
+<td>Cycle through layouts</td>
+</tr>
+<tr>
+<td><code>Ctrl+b Alt+1</code> ... <code>7</code></td>
+<td>Switch to a preset layout (6 and 7 need 3.5+)</td>
+</tr>
+<tr>
+<td><code>Ctrl+b E</code></td>
+<td>Spread the panes evenly</td>
+</tr>
+<tr>
+<td><code>Ctrl+b Ctrl+Arrow</code></td>
+<td>Resize the pane by 1 cell</td>
+</tr>
+<tr>
+<td><code>Ctrl+b Alt+Arrow</code></td>
+<td>Resize the pane by 5 cells</td>
+</tr>
+<tr>
+<td><code>Ctrl+b !</code></td>
+<td>Move the pane into its own window</td>
+</tr>
+<tr>
+<td><code>:join-pane -s 2 -t 1</code></td>
+<td>Move the pane of window 2 into window 1</td>
+</tr>
+<tr>
+<td><code>:setw synchronize-panes</code></td>
+<td>Toggle typing into all panes at once</td>
+</tr>
+<tr>
+<td><code>Ctrl+b T</code></td>
+<td>Change the pane title (3.8+)</td>
+</tr>
+<tr>
+<td><code>Ctrl+b *</code></td>
+<td>Open a floating pane (3.7+)</td>
+</tr>
+<tr>
+<td><code>Ctrl+b g</code></td>
+<td>Move or resize a floating pane (3.8+)</td>
+</tr>
+<tr>
+<td><code>Ctrl+b x</code></td>
+<td>Close the pane</td>
+</tr>
+<tr>
+<td><code>Ctrl+b &gt;</code></td>
+<td>Open the pane menu</td>
+</tr>
+</tbody>
+</table>
+<h2 id="copy-mode">Copy Mode<a class="headerlink" href="#copy-mode" title="Permanent link">&para;</a></h2>
+<p>The keys below assume vi mode. tmux uses emacs keys by default, enable vi
+mode with <code>:setw -g mode-keys vi</code> or in the <a href="#config-file">config file</a>.</p>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Ctrl+b [</code></td>
+<td>Enter copy mode</td>
+</tr>
+<tr>
+<td><code>Ctrl+b PgUp</code></td>
+<td>Enter copy mode and scroll up one page</td>
+</tr>
+<tr>
+<td><code>q</code></td>
+<td>Quit copy mode</td>
+</tr>
+<tr>
+<td><code>g</code> / <code>G</code></td>
+<td>Go to the top / bottom</td>
+</tr>
+<tr>
+<td><code>h</code> <code>j</code> <code>k</code> <code>l</code></td>
+<td>Move the cursor</td>
+</tr>
+<tr>
+<td><code>w</code> / <code>b</code></td>
+<td>Next / previous word</td>
+</tr>
+<tr>
+<td><code>/</code> / <code>?</code></td>
+<td>Search forward / backward</td>
+</tr>
+<tr>
+<td><code>n</code> / <code>N</code></td>
+<td>Next / previous search match</td>
+</tr>
+<tr>
+<td><code>Space</code></td>
+<td>Start the selection</td>
+</tr>
+<tr>
+<td><code>Esc</code></td>
+<td>Clear the selection</td>
+</tr>
+<tr>
+<td><code>Enter</code></td>
+<td>Copy the selection and quit</td>
+</tr>
+<tr>
+<td><code>Ctrl+b ]</code></td>
+<td>Paste the latest buffer</td>
+</tr>
+</tbody>
+</table>
+<h2 id="buffers">Buffers<a class="headerlink" href="#buffers" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:show-buffer</code></td>
+<td>Show the latest buffer</td>
+</tr>
+<tr>
+<td><code>:capture-pane</code></td>
+<td>Copy the visible pane content into a buffer</td>
+</tr>
+<tr>
+<td><code>:list-buffers</code></td>
+<td>List all buffers (<code>Ctrl+b #</code>)</td>
+</tr>
+<tr>
+<td><code>:choose-buffer</code></td>
+<td>Pick a buffer to paste (<code>Ctrl+b =</code>)</td>
+</tr>
+<tr>
+<td><code>:save-buffer buf.txt</code></td>
+<td>Save the latest buffer to a file</td>
+</tr>
+<tr>
+<td><code>:delete-buffer -b 1</code></td>
+<td>Delete buffer 1 (<code>Ctrl+b -</code> deletes the latest)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="misc">Misc<a class="headerlink" href="#misc" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Ctrl+b :</code></td>
+<td>Open the command prompt</td>
+</tr>
+<tr>
+<td><code>:set -g OPTION</code></td>
+<td>Set a session option for all sessions</td>
+</tr>
+<tr>
+<td><code>:setw -g OPTION</code></td>
+<td>Set a window option for all windows</td>
+</tr>
+<tr>
+<td><code>:set mouse on</code></td>
+<td>Enable the mouse (default since 3.8)</td>
+</tr>
+<tr>
+<td><code>:source-file ~/.tmux.conf</code></td>
+<td>Reload the config file</td>
+</tr>
+<tr>
+<td><code>tmux -V</code></td>
+<td>Show the tmux version</td>
+</tr>
+</tbody>
+</table>
+<h2 id="config-file">Config File<a class="headerlink" href="#config-file" title="Permanent link">&para;</a></h2>
+<p>A minimal starting point for <code>~/.tmux.conf</code>. Reload it with
+<code>:source-file ~/.tmux.conf</code> or restart tmux.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># Mouse support for selecting panes, resizing and scrolling (default since 3.8)</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nb">set</span><span class="w"> </span>-g<span class="w"> </span>mouse<span class="w"> </span>on
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="c1"># vi keys in copy mode</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>setw<span class="w"> </span>-g<span class="w"> </span>mode-keys<span class="w"> </span>vi
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="c1"># Number windows and panes from 1 instead of 0</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="nb">set</span><span class="w"> </span>-g<span class="w"> </span>base-index<span class="w"> </span><span class="m">1</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>setw<span class="w"> </span>-g<span class="w"> </span>pane-base-index<span class="w"> </span><span class="m">1</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="nb">set</span><span class="w"> </span>-g<span class="w"> </span>renumber-windows<span class="w"> </span>on
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="c1"># Keep more scrollback</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="nb">set</span><span class="w"> </span>-g<span class="w"> </span>history-limit<span class="w"> </span><span class="m">10000</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="c1"># Optional: use Ctrl+a as prefix instead of Ctrl+b</span>
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="c1"># unbind C-b</span>
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="c1"># set -g prefix C-a</span>
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="c1"># bind C-a send-prefix</span>
+</code></pre></div>
+<h2 id="help">Help<a class="headerlink" href="#help" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Ctrl+b ?</code></td>
+<td>List all key bindings</td>
+</tr>
+<tr>
+<td><code>tmux list-keys</code></td>
+<td>List all key bindings from the shell</td>
+</tr>
+<tr>
+<td><code>tmux info</code></td>
+<td>Show server and terminal info</td>
+</tr>
+<tr>
+<td><code>man tmux</code></td>
+<td>Full manual</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.top", "toc.integrate", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

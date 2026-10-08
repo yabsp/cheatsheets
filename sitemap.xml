@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-         <loc>https://yanick.spichty.org/tmux-cheatsheet/</loc>
+         <loc>https://yanick.spichty.org/cheatsheets/</loc>
+         <lastmod>2026-10-08</lastmod>
+    </url>
+    <url>
+         <loc>https://yanick.spichty.org/cheatsheets/tmux/</loc>
+         <lastmod>2026-10-08</lastmod>
+    </url>
+    <url>
+         <loc>https://yanick.spichty.org/cheatsheets/vim/</loc>
          <lastmod>2026-10-08</lastmod>
     </url>
 </urlset>
