@@ -384,6 +384,12 @@
 <p>All key bindings use the default prefix <code>Ctrl+b</code>: press <code>Ctrl+b</code>, release it,
 then press the key. Commands starting with <code>:</code> are typed into the command
 prompt, which opens with <code>Ctrl+b :</code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Version</p>
+<p>Checked in October 2026 against tmux 3.8. Everything without a version
+mark also works in tmux 3.4. Check yours with <code>tmux -V</code>, distributions
+often ship older versions.</p>
+</div>
 <h2 id="sessions">Sessions<a class="headerlink" href="#sessions" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
@@ -473,6 +479,10 @@ prompt, which opens with <code>Ctrl+b :</code>.</p>
 <td><code>Ctrl+b L</code></td>
 <td>Last used session</td>
 </tr>
+<tr>
+<td><code>Ctrl+b Shift+Tab</code></td>
+<td>Quick session switcher (3.8+)</td>
+</tr>
 </tbody>
 </table>
 <h2 id="windows">Windows<a class="headerlink" href="#windows" title="Permanent link">&para;</a></h2>
@@ -523,6 +533,10 @@ prompt, which opens with <code>Ctrl+b :</code>.</p>
 <tr>
 <td><code>Ctrl+b f</code></td>
 <td>Find a window by name</td>
+</tr>
+<tr>
+<td><code>Ctrl+b Tab</code></td>
+<td>Quick window switcher (3.8+)</td>
 </tr>
 <tr>
 <td><code>Ctrl+b &lt;</code></td>
@@ -596,8 +610,8 @@ prompt, which opens with <code>Ctrl+b :</code>.</p>
 <td>Cycle through layouts</td>
 </tr>
 <tr>
-<td><code>Ctrl+b Alt+1</code> ... <code>5</code></td>
-<td>Switch to a preset layout</td>
+<td><code>Ctrl+b Alt+1</code> ... <code>7</code></td>
+<td>Switch to a preset layout (6 and 7 need 3.5+)</td>
 </tr>
 <tr>
 <td><code>Ctrl+b E</code></td>
@@ -622,6 +636,18 @@ prompt, which opens with <code>Ctrl+b :</code>.</p>
 <tr>
 <td><code>:setw synchronize-panes</code></td>
 <td>Toggle typing into all panes at once</td>
+</tr>
+<tr>
+<td><code>Ctrl+b T</code></td>
+<td>Change the pane title (3.8+)</td>
+</tr>
+<tr>
+<td><code>Ctrl+b *</code></td>
+<td>Open a floating pane (3.7+)</td>
+</tr>
+<tr>
+<td><code>Ctrl+b g</code></td>
+<td>Move or resize a floating pane (3.8+)</td>
 </tr>
 <tr>
 <td><code>Ctrl+b x</code></td>
@@ -752,7 +778,7 @@ mode with <code>:setw -g mode-keys vi</code> or in the <a href="#config-file">co
 </tr>
 <tr>
 <td><code>:set mouse on</code></td>
-<td>Enable the mouse</td>
+<td>Enable the mouse (default since 3.8)</td>
 </tr>
 <tr>
 <td><code>:source-file ~/.tmux.conf</code></td>
@@ -767,7 +793,7 @@ mode with <code>:setw -g mode-keys vi</code> or in the <a href="#config-file">co
 <h2 id="config-file">Config File<a class="headerlink" href="#config-file" title="Permanent link">&para;</a></h2>
 <p>A minimal starting point for <code>~/.tmux.conf</code>. Reload it with
 <code>:source-file ~/.tmux.conf</code> or restart tmux.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># Mouse support for selecting panes, resizing and scrolling</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># Mouse support for selecting panes, resizing and scrolling (default since 3.8)</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nb">set</span><span class="w"> </span>-g<span class="w"> </span>mouse<span class="w"> </span>on
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
 <a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="c1"># vi keys in copy mode</span>
