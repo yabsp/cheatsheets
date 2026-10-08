@@ -1,0 +1,18 @@
+/* Same width and column split for every table */
+.md-typeset__table {
+  display: block;
+}
+
+.md-typeset table:not([class]) {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+}
+
+.md-typeset table:not([class]) th:first-child {
+  width: 45%;
+}
+
+.md-typeset table:not([class]) td {
+  overflow-wrap: anywhere;
+}
