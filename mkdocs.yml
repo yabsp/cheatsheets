@@ -1,6 +1,6 @@
-site_name: tmux Cheat Sheet
+site_name: Cheat Sheets
 site_author: Yanick Spichty
-site_url: https://yanick.spichty.org/tmux-cheatsheet/
+site_url: https://yanick.spichty.org/cheatsheets/
 
 theme:
   name: material
@@ -33,4 +33,6 @@ markdown_extensions:
   - pymdownx.superfences
 
 nav:
-  - Cheat Sheet: index.md
+  - Home: index.md
+  - tmux: tmux.md
+  - Vim: vim.md
