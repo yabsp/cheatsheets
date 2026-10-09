@@ -6,6 +6,7 @@ The site has been made using MkDocs.
 - [tmux](docs/tmux.md) - sessions, windows, panes and copy mode
 - [Vim](docs/vim.md) - visual mode, search, replace, copy and paste
 - [Linux](docs/linux.md) - disk usage, permissions, write protection, mounting and network shares
+- [Regex](docs/regex.md) - regular expressions for grep, sed and awk
 
 ## Adding a Cheat Sheet
 1. Create `docs/<name>.md`.

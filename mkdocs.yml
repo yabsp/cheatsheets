@@ -37,3 +37,4 @@ nav:
   - tmux: tmux.md
   - Vim: vim.md
   - Linux: linux.md
+  - Regex: regex.md
