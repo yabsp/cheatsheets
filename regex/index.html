@@ -1,0 +1,934 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="Yanick Spichty">
+      
+      
+        <link rel="canonical" href="https://yanick.spichty.org/cheatsheets/regex/">
+      
+      
+        <link rel="prev" href="../linux/">
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.4">
+    
+    
+      
+        <title>Regex - Cheat Sheets</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="blue-grey" data-md-color-accent="light-blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#regex-cheat-sheet" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Cheat Sheets" class="md-header__button md-logo" aria-label="Cheat Sheets" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Cheat Sheets
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Regex
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Cheat Sheets" class="md-nav__button md-logo" aria-label="Cheat Sheets" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Cheat Sheets
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tmux/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    tmux
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vim/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Vim
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../linux/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Linux
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Regex
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Regex
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#modes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Modes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#characters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Characters
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#anchors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Anchors
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quantifiers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quantifiers
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#groups" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Groups
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#perl-only-grep-p" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Perl Only (grep -P)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#grep-options" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        grep Options
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Examples
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#other-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Other Tools
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="regex-cheat-sheet">Regex Cheat Sheet<a class="headerlink" href="#regex-cheat-sheet" title="Permanent link">&para;</a></h1>
+<p>Regular expressions as used by GNU <code>grep</code> on Linux. The tables use the
+extended syntax of <code>grep -E</code>. Put patterns in single quotes so the shell does
+not change them: <code>grep -E 'a|b' file</code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Version</p>
+<p>GNU grep 3.11 and 3.12. <code>sed -E</code> and <code>awk</code> use the same extended syntax.</p>
+</div>
+<h2 id="modes">Modes<a class="headerlink" href="#modes" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>grep 'text'</code></td>
+<td>Basic: <code>+ ? | ( ) { }</code> need a backslash to be special</td>
+</tr>
+<tr>
+<td><code>grep -E 'text'</code></td>
+<td>Extended: everything below works as written</td>
+</tr>
+<tr>
+<td><code>grep -P 'text'</code></td>
+<td>Perl compatible: adds <code>\d</code>, lazy matching and lookarounds</td>
+</tr>
+<tr>
+<td><code>grep -F 'text'</code></td>
+<td>Fixed string, no regex at all, e.g. for <code>a.b</code></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Extended (<code>grep -E</code>)</th>
+<th>Basic (<code>grep</code>)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>a+</code></td>
+<td><code>a\+</code></td>
+</tr>
+<tr>
+<td><code>a?</code></td>
+<td><code>a\?</code></td>
+</tr>
+<tr>
+<td><code>a{2,5}</code></td>
+<td><code>a\{2,5\}</code></td>
+</tr>
+<tr>
+<td><code>(ab)</code></td>
+<td><code>\(ab\)</code></td>
+</tr>
+<tr>
+<td><code>a|b</code></td>
+<td><code>a\|b</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="characters">Characters<a class="headerlink" href="#characters" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Pattern</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>.</code></td>
+<td>Any character</td>
+</tr>
+<tr>
+<td><code>[abc]</code></td>
+<td>One of <code>a</code>, <code>b</code> or <code>c</code></td>
+</tr>
+<tr>
+<td><code>[^abc]</code></td>
+<td>Any character except <code>a</code>, <code>b</code> or <code>c</code></td>
+</tr>
+<tr>
+<td><code>[a-z0-9]</code></td>
+<td>One character from the ranges</td>
+</tr>
+<tr>
+<td><code>\w</code> / <code>\W</code></td>
+<td>Word character <code>[A-Za-z0-9_]</code> / anything else</td>
+</tr>
+<tr>
+<td><code>\s</code> / <code>\S</code></td>
+<td>Whitespace / anything else</td>
+</tr>
+<tr>
+<td><code>[[:digit:]]</code></td>
+<td>Digit, same as <code>[0-9]</code></td>
+</tr>
+<tr>
+<td><code>[[:alpha:]]</code> / <code>[[:alnum:]]</code></td>
+<td>Letter / letter or digit</td>
+</tr>
+<tr>
+<td><code>[[:upper:]]</code> / <code>[[:lower:]]</code></td>
+<td>Uppercase / lowercase letter</td>
+</tr>
+<tr>
+<td><code>[[:space:]]</code> / <code>[[:punct:]]</code></td>
+<td>Whitespace / punctuation</td>
+</tr>
+<tr>
+<td><code>\.</code></td>
+<td>A literal dot, escape <code>. * [ ] ^ $ \ + ? ( ) { } |</code> the same way</td>
+</tr>
+</tbody>
+</table>
+<p><code>\d</code> does not work in <code>grep</code> or <code>grep -E</code>, it matches a plain <code>d</code>. Use
+<code>[0-9]</code> or <code>grep -P</code>.</p>
+<h2 id="anchors">Anchors<a class="headerlink" href="#anchors" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Pattern</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>^</code></td>
+<td>Start of the line</td>
+</tr>
+<tr>
+<td><code>$</code></td>
+<td>End of the line</td>
+</tr>
+<tr>
+<td><code>\&lt;</code> / <code>\&gt;</code></td>
+<td>Start / end of a word</td>
+</tr>
+<tr>
+<td><code>\b</code> / <code>\B</code></td>
+<td>Word boundary / not a word boundary</td>
+</tr>
+</tbody>
+</table>
+<h2 id="quantifiers">Quantifiers<a class="headerlink" href="#quantifiers" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Pattern</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>*</code></td>
+<td>0 or more</td>
+</tr>
+<tr>
+<td><code>+</code></td>
+<td>1 or more</td>
+</tr>
+<tr>
+<td><code>?</code></td>
+<td>0 or 1</td>
+</tr>
+<tr>
+<td><code>{3}</code></td>
+<td>Exactly 3</td>
+</tr>
+<tr>
+<td><code>{2,}</code></td>
+<td>2 or more</td>
+</tr>
+<tr>
+<td><code>{2,5}</code></td>
+<td>2 to 5</td>
+</tr>
+</tbody>
+</table>
+<p>Quantifiers are greedy: <code>&lt;.+&gt;</code> matches all of <code>&lt;a&gt;&lt;b&gt;</code>. For the shortest
+match use <code>&lt;.+?&gt;</code> with <code>grep -P</code>.</p>
+<h2 id="groups">Groups<a class="headerlink" href="#groups" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Pattern</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>(ab)+</code></td>
+<td>Group, here <code>ab</code> repeated</td>
+</tr>
+<tr>
+<td><code>cat|dog</code></td>
+<td>Either <code>cat</code> or <code>dog</code></td>
+</tr>
+<tr>
+<td><code>(cat|dog)s</code></td>
+<td>Alternatives inside a group</td>
+</tr>
+<tr>
+<td><code>(ab)\1</code></td>
+<td><code>\1</code> repeats what group 1 matched, here <code>abab</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="perl-only-grep-p">Perl Only (grep -P)<a class="headerlink" href="#perl-only-grep-p" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Pattern</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>\d</code> / <code>\D</code></td>
+<td>Digit / not a digit</td>
+</tr>
+<tr>
+<td><code>+?</code> / <code>*?</code></td>
+<td>Lazy, match as little as possible</td>
+</tr>
+<tr>
+<td><code>(?i)</code></td>
+<td>Ignore case for the rest of the pattern</td>
+</tr>
+<tr>
+<td><code>(?:ab)</code></td>
+<td>Group without capturing</td>
+</tr>
+<tr>
+<td><code>(?=EUR)</code> / <code>(?!EUR)</code></td>
+<td>Followed / not followed by <code>EUR</code></td>
+</tr>
+<tr>
+<td><code>(?&lt;=price: )</code> / <code>(?&lt;!-)</code></td>
+<td>Preceded / not preceded by</td>
+</tr>
+<tr>
+<td><code>\K</code></td>
+<td>Drop everything matched so far from the output</td>
+</tr>
+</tbody>
+</table>
+<h2 id="grep-options">grep Options<a class="headerlink" href="#grep-options" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>-i</code></td>
+<td>Ignore case</td>
+</tr>
+<tr>
+<td><code>-w</code></td>
+<td>Match whole words only</td>
+</tr>
+<tr>
+<td><code>-x</code></td>
+<td>Match whole lines only</td>
+</tr>
+<tr>
+<td><code>-v</code></td>
+<td>Show lines that do not match</td>
+</tr>
+<tr>
+<td><code>-o</code></td>
+<td>Show only the matching part</td>
+</tr>
+<tr>
+<td><code>-c</code></td>
+<td>Count matching lines</td>
+</tr>
+<tr>
+<td><code>-n</code></td>
+<td>Show line numbers</td>
+</tr>
+<tr>
+<td><code>-r</code></td>
+<td>Search all files in a folder</td>
+</tr>
+<tr>
+<td><code>-l</code></td>
+<td>Show only file names</td>
+</tr>
+<tr>
+<td><code>-A 3</code> / <code>-B 3</code> / <code>-C 3</code></td>
+<td>Show 3 lines after / before / around each match</td>
+</tr>
+</tbody>
+</table>
+<h2 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>grep -Ev '^\s*(#|$)' &lt;file&gt;</code></td>
+<td>Config without comments and empty lines</td>
+</tr>
+<tr>
+<td><code>grep -Ei 'error|warn' &lt;log&gt;</code></td>
+<td>Lines with errors or warnings</td>
+</tr>
+<tr>
+<td><code>grep -E '^[0-9]{4}-[0-9]{2}-[0-9]{2}' &lt;file&gt;</code></td>
+<td>Lines starting with a date</td>
+</tr>
+<tr>
+<td><code>grep -Eo '([0-9]{1,3}\.){3}[0-9]{1,3}' &lt;file&gt;</code></td>
+<td>Extract IPv4 addresses</td>
+</tr>
+<tr>
+<td><code>grep -oP 'version=\K[0-9.]+' &lt;file&gt;</code></td>
+<td>Extract the value after <code>version=</code></td>
+</tr>
+<tr>
+<td><code>grep -oP '\d+(?= EUR)' &lt;file&gt;</code></td>
+<td>Extract numbers followed by <code>EUR</code></td>
+</tr>
+<tr>
+<td><code>grep -rnw 'TODO' &lt;dir&gt;</code></td>
+<td>Find <code>TODO</code> in all files with line numbers</td>
+</tr>
+</tbody>
+</table>
+<h2 id="other-tools">Other Tools<a class="headerlink" href="#other-tools" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>sed -E 's/(\w+)-(\w+)/\2-\1/'</code></td>
+<td>Extended syntax, <code>\1</code> in the replacement</td>
+</tr>
+<tr>
+<td><code>awk '/^(cat|dog)$/'</code></td>
+<td>Extended syntax</td>
+</tr>
+<tr>
+<td><code>find . -regextype posix-extended -regex '.*\.(jpg|png)'</code></td>
+<td>Must match the whole path</td>
+</tr>
+<tr>
+<td><code>rg</code></td>
+<td>ripgrep: supports <code>\d</code> and lazy matching, lookarounds need <code>rg -P</code></td>
+</tr>
+<tr>
+<td>Vim</td>
+<td>Own syntax, <code>\v</code> makes it close to extended, see the <a href="../vim/#search">Vim cheat sheet</a></td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.top", "toc.integrate", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
